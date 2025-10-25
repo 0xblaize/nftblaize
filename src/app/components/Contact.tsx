@@ -4,6 +4,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 const DEEP_BG_COLOR = "#0f001f";
 
@@ -22,7 +23,7 @@ const FarcasterIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 interface IconButtonProps {
   href: string;
-  icon: React.ElementType | any; // Accept React component or FontAwesome icon
+  icon: IconDefinition | React.FC<{ className?: string }>;
   title: string;
 }
 
@@ -45,7 +46,7 @@ const IconButton: React.FC<IconButtonProps> = ({ href, icon, title }) => (
 export default function Contact() {
   const GITHUB_URL = "https://github.com/0xblaize";
   const TWITTER_URL = "https://x.com/0xblaize";
-  const FARCASTER_URL = "https://farcaster.xyz/blaize"; // Updated Farcaster profile link
+  const FARCASTER_URL = "https://farcaster.xyz/blaize";
   const EMAIL_ADDRESS = "Blaizedami@gmail.com";
 
   return (
@@ -58,7 +59,7 @@ export default function Contact() {
 
       <p className="text-gray-300 text-sm">
         Looking to join a team passionate about building products that make life
-        simpler and smarter. Let’s connect.
+        simpler and smarter. Let&apos;s connect.
       </p>
 
       <div className="space-y-1">
