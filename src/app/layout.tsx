@@ -42,8 +42,7 @@ export default function RootLayout({
         {/* Page content */}
         <main className="pt-20">{children}</main>
 
-        {/* Footer on all pages */}
-        <Footer />
+    
       </body>
     </html>
   );
