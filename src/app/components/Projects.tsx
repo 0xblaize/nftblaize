@@ -48,7 +48,10 @@ export default function FeaturedProjects() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            ref={(el) => (refs.current[index] = el)}
+            ref={(el) => {
+  refs.current[index] = el;
+}}
+
             className={`w-full max-w-[300px] flex flex-col items-center cursor-pointer transition-all duration-700 ease-in-out transform ${
               visible[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             } hover:scale-105`}

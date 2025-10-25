@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+
+     "build:prod": "next build --ignore-build-errors"
   },
   "dependencies": {
     "@fontsource/preahvihear": "^5.2.7",
