@@ -2,24 +2,30 @@
 
 import { useEffect, useRef, useState } from "react";
 
+interface Project {
+  name: string;
+  image: string;
+  link: string;
+}
+
 export default function FeaturedProjects() {
-  const projects = [
+  const projects: Project[] = [
     { name: "Phoenix", image: "/phoniex.png", link: "https://0xblaize.github.io/phoenixwebsite.github.io/" },
     { name: "XT Exchange", image: "/xt-exchange.png", link: "https://www.xt.com/" },
     { name: "Paragon", image: "/paragon.png", link: "https://paragonpreview.vercel.app/" },
   ];
 
-  const refs = useRef<(HTMLDivElement | null)[]>([]);
+  // Typed ref array
+  const refs = useRef<(HTMLAnchorElement | null)[]>([]);
   const [visible, setVisible] = useState<boolean[]>(projects.map(() => false));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const index = refs.current.indexOf(entry.target as HTMLDivElement);
+          const index = refs.current.indexOf(entry.target as HTMLAnchorElement);
           if (index === -1) return;
 
-          // Toggle visibility based on intersection
           setVisible((prev) => {
             const newState = [...prev];
             newState[index] = entry.isIntersecting;
@@ -27,7 +33,7 @@ export default function FeaturedProjects() {
           });
         });
       },
-      { threshold: 0.5 } // 50% of card visible
+      { threshold: 0.5 }
     );
 
     refs.current.forEach((el) => el && observer.observe(el));
@@ -48,24 +54,20 @@ export default function FeaturedProjects() {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            ref={(el) => {
-  refs.current[index] = el;
-}}
-
+            ref={(el: HTMLAnchorElement | null) => {
+              refs.current[index] = el; // Type-safe assignment
+            }}
             className={`w-full max-w-[300px] flex flex-col items-center cursor-pointer transition-all duration-700 ease-in-out transform ${
               visible[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             } hover:scale-105`}
           >
-            {/* Project image */}
             <img
               src={project.image}
               alt={project.name}
               className="w-full h-auto rounded-xl shadow-xl mb-4"
             />
-
-            {/* Project name */}
             <h2
-              className={`text-xl  transition-all duration-700 ease-in-out transform ${
+              className={`text-xl transition-all duration-700 ease-in-out transform ${
                 visible[index] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
