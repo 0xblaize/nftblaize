@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "NFTBlaize | Portfolio",
   description: "Frontend Developer & Web3 Enthusiast Portfolio",
   icons: {
-    icon: "https://i.imgur.com/KrgZVPF.png", // <-- Replace with your direct Imgur image URL
+    icon: "/favicon.ico", // ✅ Local path, not Imgur
   },
 };
 
@@ -20,11 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>NFTBlaize | Portfolio</title>
-        <link
-          rel="icon"
-          href="https://i.imgur.com/KrgZVPF.png" // <-- Replace with your direct Imgur image URL
-        />
+        <link rel="icon" href="/favicon.png" /> {/* ✅ Local favicon */}
       </head>
       <body
         className="text-white font-sans"
@@ -36,13 +32,9 @@ export default function RootLayout({
           minHeight: "100vh",
         }}
       >
-        {/* Navbar on all pages */}
         <Navbar />
-
-        {/* Page content */}
         <main className="pt-20">{children}</main>
-
-    
+        <Footer />
       </body>
     </html>
   );

@@ -7,6 +7,7 @@ interface SkillItem {
   icon: React.ReactNode;
   actionText: string;
   color: string;
+  link: string;
 }
 
 interface SkillCardProps extends SkillItem {}
@@ -80,6 +81,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
   icon,
   actionText,
   color,
+  link,
 }) => {
   return (
     <div
@@ -97,7 +99,12 @@ const SkillCard: React.FC<SkillCardProps> = ({
           {title}
         </h3>
         <p className="text-sm text-gray-300 mb-4 flex-grow">{description}</p>
-        <button
+
+        {/* ✅ FIXED: added href and target attributes */}
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="
             inline-block px-5 py-2 mt-4 text-sm font-semibold text-white uppercase tracking-wider
             bg-transparent border border-[#ff00ff] rounded-lg 
@@ -106,11 +113,12 @@ const SkillCard: React.FC<SkillCardProps> = ({
           "
         >
           {actionText}
-        </button>
+        </a>
       </div>
     </div>
   );
 };
+
 
 const SKILLS_DATA: SkillItem[] = [
   {
@@ -121,6 +129,7 @@ const SKILLS_DATA: SkillItem[] = [
     icon: <ParagonIcon />,
     actionText: "View Project",
     color: "bg-gradient-to-br from-[#130428] to-[#251043]",
+    link: "https://paragonpreview.vercel.app/",
   },
   {
     id: 2,
@@ -130,6 +139,7 @@ const SKILLS_DATA: SkillItem[] = [
     icon: <ExchangeIcon />,
     actionText: "Explore Design",
     color: "bg-gradient-to-br from-[#251043] to-[#38126D]",
+    link: "https://www.xt.com/en",
   },
   {
     id: 3,
@@ -139,6 +149,7 @@ const SKILLS_DATA: SkillItem[] = [
     icon: <PhoenixIcon />,
     actionText: "Learn More",
     color: "bg-gradient-to-br from-[#38126D] to-[#261045]",
+    link: "https://0xblaize.github.io/phoenixwebsite.github.io/",
   },
   {
     id: 4,
@@ -148,6 +159,7 @@ const SKILLS_DATA: SkillItem[] = [
     icon: <MobileIcon />,
     actionText: "View Marketplace",
     color: "bg-gradient-to-br from-[#261045] to-[#190634]",
+    link: "https://github.com/0xblaize/Popmundo123",
   },
 ];
 
