@@ -2,7 +2,7 @@ export default function About() {
   return (
     <section className="py-20 px-6 max-w-4xl mx-auto" id="about">
       <h2 className="text-3xl font-bold text-white mb-2">
-        I&apos;m a frontend developer
+        I&apos;m a FullstacK developer
       </h2>
       <p className="text-xs text-gray-300 mb-6">
         Currently, I&apos;m a Web3 Developer
